@@ -1,40 +1,24 @@
 # Agent Instructions
 
-## Development Environment
-This project uses [devenv](https://devenv.sh/) for reproducible development environments with Nix.
-
 ## Commands
-- `devenv shell` - Enter the development shell
-- `devenv test` - Run tests (currently runs git version check)
 - `go build` - Build Go project
-- `go run main.go` - Run the chat application
+- `go run cms/agent.go` - Run the chat application
 - `go test ./...` - Run all Go tests
 - `go test <package>` - Run tests for specific package
 - `go mod tidy` - Download dependencies
-- `hello` - Custom script that greets from the development environment
 
 ### Application Commands
-- `go run chat.go` - Simple chat interface with Gemini
-- `go run read.go` - Chat with file reading capabilities
-- `go run list_files.go` - Chat with file listing and reading capabilities
-- `go run bash_tool.go` - Chat with file operations and bash command execution
-- `go run edit_tool.go` - Chat with full file operations (read, list, edit, bash)
+- `go run agent.go` - Simple chat interface with Gemini
+- `go run agent.go --tools read_file` - Chat with file reading capabilities
 
 ### Verbose Logging
 All Go applications support a `--verbose` flag for detailed execution logging:
-- `go run chat.go --verbose` - Enable verbose logging for debugging
-- `go run read.go --verbose` - See detailed tool execution and API calls
-- `go run edit_tool.go --verbose` - Debug file operations and tool usage
+- `go run agent.go [--tools <tool1>, <tool2>, ...] --verbose` - Enable verbose logging for debugging
 
 ## Architecture
 - **Environment**: Nix-based development environment using devenv
 - **Shell**: Includes Git, Go toolchain, and custom greeting script
 - **Structure**: Chat application with terminal interface to Gemini via Gemini API
-
-## Code Style Guidelines
-- Follow Nix conventions for devenv.nix configuration
-- Use standard Git workflows
-- Development environment configuration should be reproducible
 
 ## Troubleshooting
 
